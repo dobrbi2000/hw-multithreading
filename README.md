@@ -119,6 +119,46 @@ The problem was caused by concurrent modification of a non-thread-safe map durin
 
 ---
 
+## Task 1 Step 6 - Perfomance
+
+**Results**
+
+- **Collections.synchronizedMap**
+  - Write ops: 88,734
+  - Read ops: 23,028
+  - Total ops: 111,762
+  - Ops/sec: 22,352.4
+
+- **ConcurrentHashMap**
+  - Write ops: 25,155,824
+  - Read ops: 38
+  - Total ops: 25,155,862
+  - Ops/sec: 5,031,172.4
+
+- **CustomThreadSafeMap**
+  - Write ops: 389,024
+  - Read ops: 2,175
+  - Total ops: 391,199
+  - Ops/sec: 78,239.8
+
+### Short Conclusion
+
+`ConcurrentHashMap` showed the highest total throughput in this benchmark.  
+However, the number of read operations was very low because the map grew very quickly, and each iteration over values became more expensive.
+
+`Collections.synchronizedMap` showed the lowest throughput because iteration required explicit synchronization, which blocked concurrent writes.
+
+`CustomThreadSafeMap` performed better than `Collections.synchronizedMap` in total operations, but it still used a single lock and therefore limited concurrency.
+
+### Final Note
+
+This benchmark is simplified because the map size continuously increased during the test.  
+Therefore, the results reflect not only synchronization strategy, but also the cost of iterating over a growing map.
+
+---
+
+
+
 
 
 
