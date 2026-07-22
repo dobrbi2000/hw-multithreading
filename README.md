@@ -157,9 +157,7 @@ Therefore, the results reflect not only synchronization strategy, but also the c
 
 ---
 
-## Task 5
-
-### Currency Exchange Application
+# Task 5 - Currency Exchange Application
 
 ### Overview
 
