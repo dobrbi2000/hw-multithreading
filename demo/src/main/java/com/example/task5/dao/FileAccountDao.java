@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Currency;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Logger;

@@ -157,6 +157,125 @@ Therefore, the results reflect not only synchronization strategy, but also the c
 
 ---
 
+## Task 5
+
+### Currency Exchange Application
+
+### Overview
+
+This project is a simple multithreaded currency exchange application written in Java.
+
+It allows:
+- creating user accounts
+- storing account balances in different currencies
+- saving/loading accounts from files
+- adding exchange rates
+- exchanging money between currencies
+- running concurrent exchange operations safely for the same account
+
+The project was implemented with separation into:
+- **model**
+- **dao**
+- **service**
+- **util**
+- **module**
+
+It also demonstrates:
+- custom exceptions
+- logging
+- file-based persistence
+- multithreading with `ExecutorService`
+- thread-safety using per-account locks
+
+---
+
+## Features
+
+- Store account balances in multiple currencies
+- Persist accounts as `.properties` files
+- Add and retrieve exchange rates
+- Exchange currencies inside a single user account
+- Validate input data
+- Handle application-specific exceptions
+- Prevent race conditions during concurrent exchange operations
+- Log important application events
+
+---
+
+## Supported Currencies
+
+The application uses the `CurrencyCode` enum.
+
+Example:
+- `USD`
+- `EUR`
+- `GBP`
+
+You can extend the enum with more currencies if needed.
+
+---
+
+## Architecture
+
+### 1. Model layer
+Contains domain objects:
+- `UserAccount`
+- `ExchangeRate`
+- `CurrencyCode`
+
+### 2. DAO layer
+Responsible for file storage:
+- `AccountDao`
+- `FileAccountDao`
+
+### 3. Service layer
+Responsible for business logic:
+- `AccountService`
+- `ExchangeRateService`
+- `ExchangeService`
+
+### 4. Utility layer
+Contains helper classes:
+- `BigDecimalUtils`
+- `AccountLockManager`
+
+### 5. Module layer
+Provides a simple entry point to the application:
+- `ExchangeModule`
+
+---
+
+## Project Structure
+
+```text
+com.example.task5
+├── dao
+│   ├── AccountDao.java
+│   └── FileAccountDao.java
+├── exception
+│   ├── ApplicationException.java
+│   ├── DaoException.java
+│   ├── ValidationException.java
+│   ├── AccountNotFoundException.java
+│   ├── AccountAlreadyExistsException.java
+│   ├── ExchangeRateNotFoundException.java
+│   └── InsufficientFundsException.java
+├── model
+│   ├── CurrencyCode.java
+│   ├── ExchangeRate.java
+│   └── UserAccount.java
+├── module
+│   └── ExchangeModule.java
+├── service
+│   ├── AccountService.java
+│   ├── ExchangeRateService.java
+│   └── ExchangeService.java
+├── util
+│   ├── AccountLockManager.java
+│   └── BigDecimalUtils.java
+└── Task5Demo.java
+```
+
 
 
 
